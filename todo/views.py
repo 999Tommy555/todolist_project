@@ -4,6 +4,16 @@ import json
 from .models import Todo
 
 
+def view_todo(request, id):
+    todo = None
+    try:
+        todo = Todo.objects.get(id=id)
+    except Exception as e:
+        print(e)
+
+    return render(request, "todo/view-todo.html", {"todo": todo})
+
+
 def todolist(request):
     todos = Todo.objects.all()
 

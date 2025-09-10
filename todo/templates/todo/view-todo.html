@@ -8,7 +8,7 @@
     <style>
         .todo {
             text-align: left;
-            background-color: rgb(65, 177, 139);
+            background-color: rgb(119, 160, 146);
             border-radius: 12px;
             padding: 12px;
             margin: 12px;
@@ -18,18 +18,18 @@
 </head>
 
 <body>
-    <h1>Todolist</h1>
-    {% for todo in todos %}
-
+    <h1>Todo</h1>
+    {% if todo %}
     <div class="todo">
+        <h3>{{todo.title}}</h3>
         <h4>{{todo.created}}</h4>
-        <a href="{%url 'viewtodo' todo.id %}">
-            <h3>{{todo.title}}</h3>
-        </a>
         <p>{{todo.text}}</p>
         <u>{{todo.important}}</u>
+        {% else %}
+        <h2>無此代辦事項</h2>
+        {% endif %}
     </div>
-    {% endfor %}
+
 </body>
 
 </html>
