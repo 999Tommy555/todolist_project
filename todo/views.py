@@ -1,6 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import json
+from .models import Todo
+
+
+def todolist(request):
+    todos = Todo.objects.all()
+
+    return render(request, "todo/todolist.html", {"todos": todos})
 
 
 # Create your views here.

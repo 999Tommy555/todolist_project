@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title>
+    <style>
+        .todo {
+            text-align: left;
+            background-color: rgb(65, 177, 139);
+            border-radius: 12px;
+            padding: 12px;
+            margin: 12px;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Todolist</h1>
+    {% for todo in todos %}
+    <div class="todo">
+        <h3>{{todo.title}}</h3>
+        <h4>{{todo.created}}</h4>
+        <p>{{todo.text}}</p>
+        <u>{{todo.important}}</u>
+    </div>
+    {% endfor %}
+</body>
+
+</html>
