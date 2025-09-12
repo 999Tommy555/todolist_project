@@ -18,17 +18,13 @@
 </head>
 
 <body>
-    <h1>Todo</h1>
-    {% if todo %}
-    <div class="todo">
-        <h3>{{todo.title}}</h3>
-        <h4>{{todo.created}}</h4>
-        <p>{{todo.text}}</p>
-        <u>{{todo.important}}</u>
-        {% else %}
-        <h2>無此代辦事項</h2>
-        {% endif %}
-    </div>
+    <h1>View Todo</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">更新</button>
+    </form>
+    {{message}}
 
 </body>
 

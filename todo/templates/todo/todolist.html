@@ -21,7 +21,6 @@
     <h1>Todolist</h1>
     <a href="{%url 'create-todo' %}">建立代辦事項</a>
     {% for todo in todos %}
-
     <div class="todo">
         <h4>{{todo.created}}</h4>
         <a href="{%url 'viewtodo' todo.id %}">
@@ -29,7 +28,13 @@
         </a>
         <p>{{todo.text}}</p>
         <u>{{todo.important}}</u>
+        {% if todo.date_completed %}
+        <p>
+            完成時間:<u>{{todo.date_completed}}</u>
+        </p>
+        {% endif %}
     </div>
+
     {% endfor %}
 </body>
 
