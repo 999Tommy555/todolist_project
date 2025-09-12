@@ -24,4 +24,5 @@ urlpatterns = [
     path("books/", views.books, name="books"),
     path("admin/", admin.site.urls),
     path("todo/<int:id>", views.view_todo, name="viewtodo"),
+    path("create-todo/", views.create_todo, name="create-todo"),
 ]
