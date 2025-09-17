@@ -2,24 +2,31 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import json
 from .models import Todo
-from .forms import Todoform
+from .forms import Todoform, CreateTodoform
 from datetime import datetime
 
 
 def create_todo(request):
     message = ""
-    form = Todoform()
-
-    # GET
-
-    # POST
+    form = CreateTodoform()
     if request.method == "POST":
-        form = Todoform(request.POST)
+        form = CreateTodoform(request.POST)
         form.save()
         message = "建立成功!"
         return redirect("todolist")
 
     return render(request, "todo/create-todo.html", {"message": message, "form": form})
+
+
+def delete_todo(request, id):
+    # 檢視日期
+    try:
+        todo = Todo.objects.get(id=id)
+        todo.delete()
+    except Exception as e:
+        print(e)
+
+    return redirect("todolist")
 
 
 def view_todo(request, id):

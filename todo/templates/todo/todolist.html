@@ -22,6 +22,7 @@
     <a href="{%url 'create-todo' %}">建立代辦事項</a>
     {% for todo in todos %}
     <div class="todo">
+        <a href="{%url 'delete-todo' todo.id %}" onclick="return confirm('是否刪除?')">刪除</a>
         <h4>{{todo.created}}</h4>
         <a href="{%url 'viewtodo' todo.id %}">
             <h3>{{todo.title}}</h3>
