@@ -11,7 +11,10 @@ def create_todo(request):
     form = CreateTodoform()
     if request.method == "POST":
         form = CreateTodoform(request.POST)
-        form.save()
+        todo = form.save(commit=False)
+        todo.user = request.user
+        todo.save()
+
         message = "建立成功!"
         return redirect("todolist")
 
