@@ -56,14 +56,17 @@ def view_todo(request, id):
 
 def todolist(request):
     # order_by 加上 - 號降序
-    todos = Todo.objects.all().order_by("-created")
+    todos = None
+
+    if request.user.is_authenticated:
+        todos = Todo.objects.filter(user=request.user)
 
     return render(request, "todo/todolist.html", {"todos": todos})
 
 
 # Create your views here.
 def index(request):
-    return HttpResponse("<h1>Hello django!")
+    return HttpResponse("<h1>Hello django!<h1>")
 
 
 def books(request):

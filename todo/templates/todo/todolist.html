@@ -29,7 +29,9 @@
     {% endif %}
 
     <h1>Todolist</h1>
-
+    {% if not todos %}
+    <h3>無代辦事項，請先新增或登入</h3>
+    {% endif %}
     {% for todo in todos %}
     <div class="todo">
         <a href="{% url 'delete-todo' todo.id %}" onclick="return confirm('是否刪除?')">刪除</a>
